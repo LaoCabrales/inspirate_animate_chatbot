@@ -36,9 +36,9 @@ KNOWLEDGE_BASE = {
         "respuesta": "Sí, puedes personalizar todo del cuaderno: portada, contraportada, guardas y hojas.",
         "keywords": ["hojas", "portada", "contraportada", "guardas", "personalizadas"]
     },
-    "cuaderno argollado cocido": {
-        "respuesta": "Nuestros cuadernos son argollados.",
-        "keywords": ["argollado", "cocido", "encuadernacion"]
+    "cuaderno encuadernacion argollado cocido cosido": {
+        "respuesta": "No, los cuadernos son argollados.",
+        "keywords": ["argollado", "cocido", "encuadernacion", "cosido", "espiral", "coser"]
     },
     "cuaderno cantidad hojas": {
         "respuesta": "Nuestros cuadernos son de 80 hojas.",
@@ -46,24 +46,24 @@ KNOWLEDGE_BASE = {
     },
     "cuaderno pasta portada contraportada material": {
         "respuesta": "Los cuadernos son de pasta semi-dura de 3 milímetros de grosor con laminación en acabado brillante.",
-        "keywords": ["pasta", "portada", "contraportada", "material", "acabado", "brillante", "mate", "dura"]
+        "keywords": ["pasta", "portada", "contraportada", "material", "acabado", "brillante", "mate", "dura", "cubierta", "hecho", "dureza"]
     },
     "cuaderno color argolla": {
         "respuesta": "La argolla de los cuadernos es de color blanco.",
         "keywords": ["color", "argolla", "resorte"]
     },
-    "cuaderno precio costo": {
-        "respuesta": "El precio de cada cuaderno es de $37.000 más el envío.",
-        "keywords": ["precio", "costo", "valor", "cuaderno"]
+    # ENTRADA DE PRECIO: Más específica, sin la palabra "envío" en la respuesta.
+    "cuaderno precio costo valor": {
+        "respuesta": "El precio de cada cuaderno es de $37.000.",
+        "keywords": ["precio", "costo", "valor", "cuaderno", "cuánto"]
     },
     "cuaderno bolsillo separador": {
         "respuesta": "Los cuadernos no tienen ni bolsillos ni separadores.",
-        "keywords": ["bolsillo", "separador", "accesorio"]
+        "keywords": ["bolsillo", "separador", "accesorio", "tiene", "trae", "bolsa", "divisores", "adicional"]
     },
 
     # LLAVEROS
     "llaveros tamaño dimensiones": {
-        # Se ha mantenido la última versión que indica el rango de 3cm a 5cm
         "respuesta": "El tamaño estándar de los llaveros varía desde 3 centímetros hasta 5 centímetros de alto.",
         "keywords": ["tamaño", "dimensión", "medida", "llavero"]
     },
@@ -107,9 +107,10 @@ KNOWLEDGE_BASE = {
         "respuesta": "No tenemos servicio contraentrega por el proceso de diseño y personalización.",
         "keywords": ["contraentrega", "pago"]
     },
-    "servicio domicilio entrega bogota servientrega": {
-        "respuesta": "Si la entrega es en Bogotá, se enviará con un domiciliario en moto y el comprador paga el costo al recibir. Si es afuera de Bogotá, se envía por Servientrega y el comprador deberá pagar el excedente del envío.",
-        "keywords": ["domicilio", "entrega", "envio", "bogota", "servientrega", "moto"]
+    # CORRECCIÓN DE ENVÍO/DOMICILIO: Clave y respuesta optimizada para el costo del envío.
+    "servicio domicilio entrega envio costo pagar": {
+        "respuesta": "Si la entrega es en Bogotá, se enviará el producto con un domiciliario en moto a la dirección dada por el comprador, y el comprador debe pagar el costo del envío al recibir el producto. Si la entrega es afuera de Bogotá, el producto se enviará por Servientrega y el comprador deberá pagar el excedente del envío.",
+        "keywords": ["domicilio", "entrega", "envio", "bogota", "servientrega", "moto", "costo", "pagar", "cuánto", "valor"]
     }
 }
 
@@ -176,10 +177,3 @@ if user_prompt := st.chat_input("Escribe tu pregunta aquí:"):
 
     # Agregar la respuesta del asistente al historial
     st.session_state.messages.append({"role": "assistant", "content": assistant_response})
-
-# NOTA IMPORTANTE: Para que este código funcione,
-# la librería 'fuzzywuzzy' debe estar instalada.
-# Asegúrate de incluirla en un archivo 'requirements.txt' en tu repositorio:
-# streamlit
-# python-Levenshtein
-# fuzzywuzzy
